@@ -28,10 +28,11 @@ ou até mesmo por editores de texto, como o VS Code e afins.</p>
  
  **Testando a API com o postman**
  <p>Abra o postman digite a url: http://localhost:8080</p>
- <p>1-O endpoint `/usuarios` lista todos os usuário que estejam cadastrados no banco.
+ <p>1-O endpoint "/usuarios" lista todos os usuário que estejam cadastrados no banco.
  Caso não exista nada, ele retorna uma lista vazia no formato JSON.
  Faça utilizando um GET.</p>
- 
+ <p>2-O endpoint "/usuarios/{id}" retorna a busca de um usuário específico que esteja cadastrado no banco. Utilize o GET.
+ </p>
  
  
  
