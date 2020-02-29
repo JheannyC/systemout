@@ -1,5 +1,7 @@
 package com.ufpb.triggerdev.systemoutproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -17,6 +19,7 @@ public class Disciplina implements Serializable {
 
     private String nomeDisciplina;
 
+    @JsonBackReference
     @ManyToMany
     @JoinTable(
             name="DISCIPLINA_CURSO",

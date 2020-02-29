@@ -21,11 +21,8 @@ public class CursoResource {
 
     @RequestMapping (value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> find (@PathVariable Integer id) {
-        Optional<Curso> cursos = cursoService.buscarCursos(id);
+        Optional<Curso> cursos = Optional.ofNullable(cursoService.find(id));
         return ResponseEntity.ok().body(cursos);
     }
-
-
-
 
 }

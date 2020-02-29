@@ -2,6 +2,7 @@ package com.ufpb.triggerdev.systemoutproject.services;
 
 import com.ufpb.triggerdev.systemoutproject.domain.Curso;
 import com.ufpb.triggerdev.systemoutproject.repositories.CursoRepository;
+import com.ufpb.triggerdev.systemoutproject.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,8 +18,8 @@ public class CursoService {
         cursoRepository.saveAndFlush(curso);
     }
 
-    public Optional<Curso> buscarCursos(Integer id) {
-        Optional<Curso> usuario = cursoRepository.findById(id);
-        return usuario;
+    public Curso find (Integer id) {
+        Optional<Curso> curso = cursoRepository.findById(id);
+        return curso.orElseThrow (() -> new ObjectNotFoundException("Not found: "+ id));
     }
 }

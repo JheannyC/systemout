@@ -40,7 +40,6 @@ public class SystemoutprojectApplication implements CommandLineRunner {
         d2.getCursos().addAll(Arrays.asList(curso1, curso2));
         d3.getCursos().addAll(Arrays.asList(curso2));
 
-        cursoRepository.saveAll(Arrays.asList(curso1,curso2));
-        disciplinaRepository.saveAll(Arrays.asList(d1,d2,d3));
+
     }
 }
