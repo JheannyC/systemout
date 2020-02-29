@@ -1,4 +1,4 @@
-package com.ufpb.triggerdev.systemoutproject.dominio;
+package com.ufpb.triggerdev.systemoutproject.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
