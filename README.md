@@ -1,7 +1,7 @@
-<p>##Universidade Federal da Paraíba</p>
-<p>####Departamento de Ciências Exatas</p>
+##Universidade Federal da Paraíba <br>
+####Departamento de Ciências Exatas
 
-<p>Projeto referente à disciplina de Projeto Avançado de Software</p>p>
+<p>Projeto referente à disciplina de Projeto Avançado de Software</p>
 
 <p> Esta API foi construída, inicialmente, com a IDE Intellij, podendo ser executada
 a partir de outras IDEs que sejam compatíveis com a linguagem Java, a exemplo do Eclipse
