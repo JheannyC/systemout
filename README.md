@@ -1,5 +1,5 @@
-##Universidade Federal da Paraíba <br>
-####Departamento de Ciências Exatas
+**Universidade Federal da Paraíba** <br>
+**Departamento de Ciências Exatas**
 
 <p>Projeto referente à disciplina de Projeto Avançado de Software</p>
 
