@@ -1,13 +1,13 @@
-##Universidade Federal da Paraíba
-####Departamento de Ciências Exatas
+<p>##Universidade Federal da Paraíba</p>
+<p>####Departamento de Ciências Exatas</p>
 
-<br>Projeto referente à disciplina de Projeto Avançado de Software</br>
+<p>Projeto referente à disciplina de Projeto Avançado de Software</p>p>
 
 <p> Esta API foi construída, inicialmente, com a IDE Intellij, podendo ser executada
 a partir de outras IDEs que sejam compatíveis com a linguagem Java, a exemplo do Eclipse
 ou até mesmo por editores de texto, como o VS Code e afins.</p>
 <p>Para executar a API é necessário possuir instalado as seguintes ferramentas:</p>
-<p>* Java versão 11 ;</p>
+<p>* Java versão 11</p>
 <p>* Maven</p>
 <p>* Postgres;</p>
 <p>* DBeaver</p>
