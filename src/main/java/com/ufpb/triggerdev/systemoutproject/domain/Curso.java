@@ -1,10 +1,11 @@
 package com.ufpb.triggerdev.systemoutproject.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity (name = "cursos")
@@ -17,6 +18,10 @@ public class Curso implements Serializable {
     private Integer id;
 
     private String nomeCurso;
+
+    @JsonManagedReference
+    @ManyToMany (mappedBy = "cursos")
+    private List<Disciplina> disciplinas= new ArrayList<>();
 
     public Curso() {
     }
@@ -42,17 +47,27 @@ public class Curso implements Serializable {
         this.nomeCurso = nomeCurso;
     }
 
+    public List<Disciplina> getDisciplinas() {
+        return disciplinas;
+    }
+
+    public void setDisciplinas(List<Disciplina> disciplinas) {
+        this.disciplinas = disciplinas;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Curso curso = (Curso) o;
-        return Objects.equals(id, curso.id) &&
-                Objects.equals(nomeCurso, curso.nomeCurso);
+        return Objects.equals(id, curso.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, nomeCurso);
+        return Objects.hash(id);
     }
+
 }
+
+
