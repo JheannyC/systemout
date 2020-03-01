@@ -19,6 +19,7 @@ public class Disciplina implements Serializable {
 
     private String nomeDisciplina;
 
+    //Mapeamento entre cursos e disciplinas - nova tabela
     @JsonBackReference
     @ManyToMany
     @JoinTable(
@@ -30,10 +31,19 @@ public class Disciplina implements Serializable {
     )
     private List <Curso> cursos = new ArrayList<>();
 
-    /*@JsonBackReference
-    @ManyToOne
-    @JoinColumn (name = "id_usuario")
-    private Usuario usuario;*/
+
+    //Mapeamento entre usuarios e disciplinas - nova tabela
+    @JsonBackReference
+    @ManyToMany
+    @JoinTable(
+            name="DISCIPLINA_USUARIO",
+            joinColumns=
+            @JoinColumn(name="disciplina_id", referencedColumnName="Id"),
+            inverseJoinColumns=
+            @JoinColumn(name="usuario_id", referencedColumnName="Id")
+    )
+    private List <Usuario> usuarios = new ArrayList<>();
+
 
     public Disciplina() {
     }
@@ -67,13 +77,14 @@ public class Disciplina implements Serializable {
         this.cursos = cursos;
     }
 
-    /*public Usuario getUsuario() {
-        return usuario;
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }*/
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
+    }
+
 
     @Override
     public boolean equals(Object o) {

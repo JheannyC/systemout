@@ -20,13 +20,15 @@ public class Curso implements Serializable {
 
     private String nomeCurso;
 
+    //Mapeamento entre cursos e disciplinas
     @JsonBackReference
     @ManyToMany (mappedBy = "cursos")
     private List<Disciplina> disciplinas = new ArrayList<>();
 
+    //Mapeamento entre curso e usuario
     @JsonBackReference
-    @OneToMany(mappedBy = "curso")
-    private List <Usuario> usuario = new ArrayList<>();
+    @OneToOne(mappedBy = "curso")
+    private Usuario usuario;
 
     public Curso() {
     }
@@ -60,11 +62,11 @@ public class Curso implements Serializable {
         this.disciplinas = disciplinas;
     }
 
-    public List<Usuario> getUsuario() {
+    public Usuario getUsuario() {
         return usuario;
     }
 
-    public void setUsuario(List<Usuario> usuario) {
+    public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 

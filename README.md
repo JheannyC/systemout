@@ -20,7 +20,7 @@ ou até mesmo por editores de texto, como o VS Code e afins.</p>
 
 **Criando a conexão com o banco de dados** 
 <p>Para iniciar a conexão com o banco de dados abra o DBeaver e crie
- uma nova conexão do banco de dados, utilizando o postgres, com o nome da base de dados "systemoutjpa", usuario "postgres" e senha "postgres".
+ uma nova conexão do banco de dados, utilizando o postgres, com o nome da base de dados "systemout", usuario "postgres" e senha "postgres".
  Depois de configurado, vamos abrir o postman para testar a API.</p>
  
  **Execute o projeto**
