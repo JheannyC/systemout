@@ -33,10 +33,13 @@ public class SystemoutprojectApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
         Curso c1 = new Curso (null, "Sistemas de Informação");
         Curso c2 = new Curso (null, "Ciências da Computação");
+        cursoRepository.saveAll(Arrays.asList(c1,c2));
 
-        Disciplina d1 = new Disciplina(null,"Matemática Elementar");
-        Disciplina d2 = new Disciplina(null, "Estrutura de Dados I");
+        Disciplina d1 = new Disciplina(null,"Projeto Avançado");
+        Disciplina d2 = new Disciplina(null, "Banco de dados");
         Disciplina d3 = new Disciplina(null, "Estrutura de Dados II");
+
+        disciplinaRepository.saveAll(Arrays.asList(d1,d2,d3));
 
         c1.getDisciplinas().addAll(Arrays.asList(d1, d2, d3));
         c2.getDisciplinas().addAll(Arrays.asList(d1, d2));
@@ -45,18 +48,17 @@ public class SystemoutprojectApplication implements CommandLineRunner {
         d2.getCursos().addAll(Arrays.asList(c1, c2));
         d3.getCursos().addAll(Arrays.asList(c2));
 
-        Usuario u1 = new Usuario(null, "Samira", "samira@dcx", TipoUsuario.ESTUDANTE,c1);
-        Usuario u2 = new Usuario(null, "Fernanda", "fernanda@dcx", TipoUsuario.ESTUDANTE,c1);
-        Usuario u3 = new Usuario(null, "Josilene", "josilene@dcx", TipoUsuario.PROFESSOR, c2);
+        cursoRepository.saveAll(Arrays.asList(c1,c2));
+        disciplinaRepository.saveAll(Arrays.asList(d1,d2,d3));
 
-        d1.getUsuarios().addAll(Arrays.asList(u1,u3));
-        d2.getUsuarios().addAll(Arrays.asList(u1,u2,u3));
-        d3.getUsuarios().addAll(Arrays.asList(u2,u3));
 
-        u1.getDisciplinas().addAll(Arrays.asList(d1,d2));
-        u2.getDisciplinas().addAll(Arrays.asList(d2,d3));
-        u3.getDisciplinas().addAll(Arrays.asList(d1,d2,d3));
+        Usuario u1 = new Usuario(null, "iusdhfija", "jadfhsk@dcx", TipoUsuario.ESTUDANTE,c1);
 
+        Usuario u2 = new Usuario(null, "fddfas", "fedsarnfsadanda@dcx", TipoUsuario.ESTUDANTE,c1);
+
+
+        //disciplinaRepository.saveAll(Arrays.asList(d1,d2));
+     usuarioRepository.saveAll(Arrays.asList(u1,u2));
 
     }
 }

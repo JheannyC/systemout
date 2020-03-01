@@ -1,6 +1,6 @@
 package com.ufpb.triggerdev.systemoutproject.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -20,7 +20,7 @@ public class Disciplina implements Serializable {
     private String nomeDisciplina;
 
     //Mapeamento entre cursos e disciplinas - nova tabela
-    @JsonBackReference
+
     @ManyToMany
     @JoinTable(
             name="DISCIPLINA_CURSO",
@@ -30,19 +30,6 @@ public class Disciplina implements Serializable {
             @JoinColumn(name="curso_id", referencedColumnName="Id")
     )
     private List <Curso> cursos = new ArrayList<>();
-
-
-    //Mapeamento entre usuarios e disciplinas - nova tabela
-    @JsonBackReference
-    @ManyToMany
-    @JoinTable(
-            name="DISCIPLINA_USUARIO",
-            joinColumns=
-            @JoinColumn(name="disciplina_id", referencedColumnName="Id"),
-            inverseJoinColumns=
-            @JoinColumn(name="usuario_id", referencedColumnName="Id")
-    )
-    private List <Usuario> usuarios = new ArrayList<>();
 
 
     public Disciplina() {
@@ -76,15 +63,6 @@ public class Disciplina implements Serializable {
     public void setCursos(List<Curso> cursos) {
         this.cursos = cursos;
     }
-
-    public List<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public void setUsuarios(List<Usuario> usuarios) {
-        this.usuarios = usuarios;
-    }
-
 
     @Override
     public boolean equals(Object o) {

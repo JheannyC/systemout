@@ -1,6 +1,7 @@
 package com.ufpb.triggerdev.systemoutproject.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.ufpb.triggerdev.systemoutproject.enums.TipoUsuario;
 
@@ -9,6 +10,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import static javax.persistence.CascadeType.ALL;
 
 @Entity
 public class Usuario implements Serializable {
@@ -25,16 +28,9 @@ public class Usuario implements Serializable {
     private Integer tipoUsuario;
 
     //Mapeamento entre cursos e usuarios
-    @JsonManagedReference
     @OneToOne
     @JoinColumn(name = "id_curso")
     private Curso curso;
-
-    //Mapeamento entre usuarios e disciplinas
-    @JsonBackReference
-    @ManyToMany (mappedBy = "usuarios")
-    private List <Disciplina> disciplinas = new ArrayList<>();
-
 
     public Usuario() {
     }
@@ -45,7 +41,6 @@ public class Usuario implements Serializable {
         this.email = email;
         this.tipoUsuario = tipoUsuario.getCod();
         this.curso = curso;
-
     }
 
     public Integer getId() {
@@ -92,14 +87,6 @@ public class Usuario implements Serializable {
         this.curso = curso;
     }
 
-    public List<Disciplina> getDisciplinas() {
-        return disciplinas;
-    }
-
-    public void setDisciplinas(List<Disciplina> disciplinas) {
-        this.disciplinas = disciplinas;
-    }
-
 
     @Override
     public String toString() {
@@ -122,4 +109,5 @@ public class Usuario implements Serializable {
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
