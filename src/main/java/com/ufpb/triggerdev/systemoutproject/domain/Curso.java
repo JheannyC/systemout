@@ -1,5 +1,6 @@
 package com.ufpb.triggerdev.systemoutproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Entity (name = "cursos")
+@Entity
 public class Curso implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -19,9 +20,13 @@ public class Curso implements Serializable {
 
     private String nomeCurso;
 
-    @JsonManagedReference
+    @JsonBackReference
     @ManyToMany (mappedBy = "cursos")
-    private List<Disciplina> disciplinas= new ArrayList<>();
+    private List<Disciplina> disciplinas = new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "curso")
+    private List <Usuario> usuario = new ArrayList<>();
 
     public Curso() {
     }
@@ -53,6 +58,14 @@ public class Curso implements Serializable {
 
     public void setDisciplinas(List<Disciplina> disciplinas) {
         this.disciplinas = disciplinas;
+    }
+
+    public List<Usuario> getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(List<Usuario> usuario) {
+        this.usuario = usuario;
     }
 
     @Override

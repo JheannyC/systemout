@@ -1,7 +1,12 @@
 package com.ufpb.triggerdev.systemoutproject.domain;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.ufpb.triggerdev.systemoutproject.enums.TipoUsuario;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -13,17 +18,27 @@ public class Usuario implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-
     private String nome;
     private String email;
+
+    private Integer tipoUsuario;
+
+    @JsonManagedReference
+    @ManyToOne
+    @JoinColumn(name = "id_curso")
+    private Curso curso;
+
 
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nome, String email) {
+    public Usuario(Integer id, String nome, String email, TipoUsuario tipoUsuario, Curso curso) {
         this.id = id;
         this.nome = nome;
         this.email = email;
+        this.tipoUsuario = tipoUsuario.getCod();
+        this.curso = curso;
+
     }
 
     public Integer getId() {
@@ -48,6 +63,26 @@ public class Usuario implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public TipoUsuario getTipoUsuario() {
+        return TipoUsuario.toEnum(tipoUsuario);
+    }
+
+    public void setTipoUsuario(TipoUsuario tipoUsuario) {
+        this.tipoUsuario = tipoUsuario.getCod();
+    }
+
+    public void setTipoUsuario(Integer tipoUsuario) {
+        this.tipoUsuario = tipoUsuario;
+    }
+
+    public Curso getCurso() {
+        return curso;
+    }
+
+    public void setCurso(Curso curso) {
+        this.curso = curso;
     }
 
     @Override
